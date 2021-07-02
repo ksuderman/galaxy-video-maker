@@ -2,7 +2,7 @@
 
 The GTN (Galaxy Training Network) has a [wonderful method](https://youtu.be/Gm1MKAwuLxg) for generating slideshows with videos and narration from slides created with Markdown.  In fact, in the spirit of [eating your own dog food](https://www.computer.org/csdl/magazine/so/2006/03/s3005/13rRUygBwg0) that video was automatically generated from the markdown used to create the slides.
 
-However, the drawback is that the video are generated on GitHub servers via GitHub actions and there is no stand alone script (yet) to process the slides for a single video.  In addition on MacOS several of the tools used operate slightly differently, are named differently, or are not available at all (I'm looking at you `ss`).  
+However, the drawback is that the video are generated on GitHub servers via GitHub actions and there is no standalone script (yet) to process the slides for a single video.  In addition on MacOS several of the tools used operate slightly differently, are named differently, or are not available at all (I'm looking at you `ss`).  
 
 This Docker image addresses all of these problems by providing a Ubuntu 20.04 system with all the required software installed and ready to use.
 
@@ -23,7 +23,7 @@ Since Amazon is used to generate the speech you will need your own keys to be ab
    AWS_SECRET_ACCESS_KEY=<your secret access key>
    ```
    **Note:** if you name the file something other than `aws-creds.sh` be sure to use the corrent name in the command below.
-1. Run the command:
+1. From the root of the `training-material` directory run the command:
    `docker run --env-file aws-cred.sh -v $(pwd):/home/galaxy/training-material ksuderman/galaxy-video-maker <topic> <tutorial-name>`
    Where `<topic>` is one of the existing topics (e.g. admin, climate, proteomics, etc) and `<tutorial-name>` is the name of the directory containing the `slides.html` file you created.
 
