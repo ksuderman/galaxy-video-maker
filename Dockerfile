@@ -13,18 +13,18 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y --force-yes --no-install-recommends\
     apt-transport-https \
-    #ssh-client \
+    ssh-client \
     build-essential \
     #curl \
     ca-certificates \
     git \
     libicu-dev \
     'libicu[0-9][0-9].*' \
-    #lsb-rlease \
+    lsb-release \
     python-all \
-    #rlwrap \
-    #apt-utils \
-    #libssl-dev \
+    rlwrap \
+    apt-utils \
+    libssl-dev \
     graphicsmagick --fix-missing \
     imagemagick --fix-missing \
     nodejs \
@@ -40,7 +40,8 @@ RUN apt-get update && \
     zlibc zlib1g-dev zlib1g \
     #emacs \
     jq \
-    iproute2
+    iproute2 \
+    awscli
     
 #RUN npm install -g pangyp\
 # 		&& ln -s $(which pangyp) $(dirname $(which pangyp))/node-gyp\
@@ -60,7 +61,8 @@ RUN apt install -y ruby ruby-dev ruby-bundler \
 COPY make-video.sh /usr/local/bin/
 RUN useradd -ms /bin/bash galaxy && \
     echo 'galaxy ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
-    chmod +x /usr/local/bin/make-video.sh
+    chmod +x /usr/local/bin/make-video.sh && \
+    aws configure set region us-east-1
     
 USER galaxy
 RUN mkdir /home/galaxy/training-material

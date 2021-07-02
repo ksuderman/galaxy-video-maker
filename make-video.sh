@@ -8,5 +8,6 @@ fi
 topic=$1
 tutor=$2
 
+aws configure set region us-east-1
 make _site/training-material/topics/$topic/tutorials/$tutor/slides.pdf ACTIVATE_ENV=pwd
 bin/ari-quick.sh topics/$topic/tutorials/$tutor/slides.html
