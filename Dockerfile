@@ -9,7 +9,7 @@ MAINTAINER Keith Suderman <suderman@jhu.edu>
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-# install some dependencies 
+# It is likely some of these can be removed.
 RUN apt-get update && \
     apt-get install -y --force-yes --no-install-recommends\
     apt-transport-https \
@@ -29,7 +29,7 @@ RUN apt-get update && \
     imagemagick --fix-missing \
     nodejs \
     npm \ 
-    sudo \
+    #sudo \
     xvfb \
     libfontconfig \
     wkhtmltopdf \
@@ -43,16 +43,6 @@ RUN apt-get update && \
     iproute2 \
     awscli
     
-#RUN npm install -g pangyp\
-# 		&& ln -s $(which pangyp) $(dirname $(which pangyp))/node-gyp\
-# 		&& npm cache clear\
-# 		&& node-gyp configure || echo ""
-
-# install forever, bower and grunt
-#RUN npm install forever -g && \
-#    npm install -g bower && \
-#    npm install -g grunt-cli
-    
 # install ruby
 RUN apt install -y ruby ruby-dev ruby-bundler \
     && gem install bundler \
@@ -60,7 +50,7 @@ RUN apt install -y ruby ruby-dev ruby-bundler \
     
 COPY make-video.sh /usr/local/bin/
 RUN useradd -ms /bin/bash galaxy && \
-    echo 'galaxy ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+    #echo 'galaxy ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
     chmod +x /usr/local/bin/make-video.sh && \
     aws configure set region us-east-1
     
