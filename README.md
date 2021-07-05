@@ -1,8 +1,8 @@
 # Galaxy Video Maker
 
-The GTN (Galaxy Training Network) has a [wonderful method](https://youtu.be/Gm1MKAwuLxg) for generating slideshows with videos and narration from slides created with Markdown.  In fact, in the spirit of [eating your own dog food](https://www.computer.org/csdl/magazine/so/2006/03/s3005/13rRUygBwg0) that video was automatically generated from the markdown used to create the slides.
+The GTN (Galaxy Training Network) has a [wonderful method](https://youtu.be/Gm1MKAwuLxg) for generating slideshows with narrated videos from slides created with GFM (GitHub Flavored Markdown).  In fact, in the spirit of [eating your own dog food](https://www.computer.org/csdl/magazine/so/2006/03/s3005/13rRUygBwg0) that video was automatically generated from the markdown used to create the slides.
 
-However, the drawback is that the video are generated on GitHub servers via GitHub actions and there is no standalone script (yet) to process the slides for a single video.  In addition on MacOS several of the tools used operate slightly differently, are named differently, or are not available at all (I'm looking at you `ss`).  
+However, one drawback is that the videos are generated on GitHub servers via GitHub actions and there is no standalone script (yet) to process the slides for a single video on your local machine.  In addition, on MacOS several of the tools used operate slightly differently, are named differently, or are not available at all (I'm looking at you `ss`).  
 
 This Docker image addresses all of these problems by providing a Ubuntu 20.04 system with all the required software installed and ready to use.
 
@@ -10,7 +10,7 @@ This Docker image addresses all of these problems by providing a Ubuntu 20.04 sy
 
 1. Docker (of course)
 1. Credentials for AWS
-1. A local copy of the training material repository
+1. A local copy of the [training material repository](https://github.com/galaxyproject/training-material)
 
 Since Amazon is used to generate the speech you will need your own keys to be able to access the service.
 
